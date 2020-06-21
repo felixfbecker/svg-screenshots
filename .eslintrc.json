@@ -1,0 +1,6 @@
+{
+	"extends": "@sourcegraph/eslint-config",
+	"parserOptions": {
+		"project": "tsconfig.json"
+	}
+}

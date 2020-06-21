@@ -1,0 +1,21 @@
+{
+	"$schema": "https://json.schemastore.org/webextension",
+	"manifest_version": 2,
+	"name": "SVG Screenshot",
+	"description": "Take scalable, semantic, accessible screenshots, in SVG format.",
+	"version": "0.1",
+	"permissions": ["activeTab", "downloads"],
+	"icons": {
+		"200": "/icon.png"
+	},
+	"web_accessible_resources": ["src/content.ts"],
+	"browser_action": {
+		"default_title": "Capture SVG screenshot",
+		"default_icon": {
+			"200": "/icon.png"
+		}
+	},
+	"background": {
+		"scripts": ["src/background.ts"]
+	}
+}
