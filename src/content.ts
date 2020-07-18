@@ -18,7 +18,7 @@ async function main(): Promise<void> {
 
 	const blob = new Blob([svgString], { type: 'image/svg+xml' })
 	console.log('Downloading')
-	saveAs(blob, 'Screenshot ' + document.title)
+	saveAs(blob, `Screenshot ${document.title.replace(/["'/]/g, '')}.svg`)
 }
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 main()
