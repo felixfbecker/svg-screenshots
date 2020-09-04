@@ -13,11 +13,12 @@
 		"webextension-polyfill": "^0.6.0"
 	},
 	"devDependencies": {
-		"@sourcegraph/eslint-config": "^0.19.2",
+		"@sourcegraph/eslint-config": "^0.19.15",
 		"@sourcegraph/prettierrc": "^3.0.3",
 		"@types/file-saver": "^2.0.1",
 		"@types/firefox-webext-browser": "^70.0.1",
-		"eslint": "^7.3.0",
+		"eslint": "^7.4.0",
+		"jsx-dom": "^6.4.18",
 		"parcel-bundler": "^1.12.4",
 		"parcel-plugin-web-extension": "^1.6.1",
 		"prettier": "^2.0.5",
