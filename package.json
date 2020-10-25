@@ -9,6 +9,7 @@
 		"last 3 Firefox versions"
 	],
 	"dependencies": {
+		"dom-to-svg": "^0.0.1",
 		"file-saver": "^2.0.2",
 		"webextension-polyfill": "^0.6.0"
 	},
