@@ -3,8 +3,8 @@
 	"manifest_version": 2,
 	"name": "SVG Screenshot",
 	"description": "Take scalable, semantic, accessible screenshots, in SVG format.",
-	"version": "0.1",
-	"permissions": ["activeTab", "downloads"],
+	"version": "0.0.1",
+	"permissions": ["activeTab"],
 	"icons": {
 		"200": "/icon.png"
 	},
