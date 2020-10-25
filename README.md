@@ -1,6 +1,6 @@
 # SVG Screenshots Browser Extension
 
-Browser extension to take semantic, accessible screenshots of websites, as SVG - as simple as taking a PNG screenshot.
+Browser extension to take semantic, scalable, accessible screenshots of websites, as SVG - as simple as taking a PNG screenshot.
 
 ## Why use this?
 
