@@ -84,7 +84,7 @@ async function main(): Promise<void> {
 
 		const blob = new Blob([svgString], { type: 'image/svg+xml' })
 		console.log('Downloading')
-		saveAs(blob, `Screenshot ${document.title.replace(/["'/]/g, '')}.svg`)
+		saveAs(blob, `${document.title.replace(/["'/]/g, '')} Screenshot.svg`)
 	} catch (error) {
 		alert(error.message)
 		throw error
