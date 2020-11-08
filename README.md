@@ -1,5 +1,7 @@
 # SVG Screenshots Browser Extension
 
+[![CI status](https://github.com/felixfbecker/svg-screenshots/workflows/ci/badge.svg?branch=main)](https://github.com/felixfbecker/svg-screenshots/actions)
+
 Browser extension to take semantic, scalable, accessible screenshots of websites, as SVG - as simple as taking a PNG screenshot.
 
 ## Why use this?
