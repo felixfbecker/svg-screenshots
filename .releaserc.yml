@@ -1,4 +1,5 @@
-branch: main
+branches:
+  - main
 verifyConditions:
   - 'semantic-release-chrome'
   - '@semantic-release/github'
