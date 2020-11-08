@@ -1,0 +1,15 @@
+branch: main
+verifyConditions:
+  - 'semantic-release-chrome'
+  - '@semantic-release/github'
+prepare:
+  - path: semantic-release-chrome
+    distFolder: dist
+    asset: svg-screenshots-chrome.zip
+publish:
+  - path: semantic-release-chrome
+    asset: svg-screenshots-chrome.zip
+    extensionId: nfakpcpmhhilkdpphcjgnokknpbpdllg
+  - path: '@semantic-release/github'
+    assets:
+      - path: svg-screenshots-chrome.zip
