@@ -13,7 +13,7 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": "src",
 		"paths": {
-			"*": ["types/*", "*"],
+			"*": ["types/*", "./*"],
 		},
 	},
 	"include": ["src/**/*"],

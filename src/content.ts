@@ -1,7 +1,8 @@
 import './polyfill'
 
-import { documentToSVG, inlineResources, formatXML } from 'dom-to-svg'
+import { documentToSVG, inlineResources } from 'dom-to-svg'
 import { saveAs } from 'file-saver'
+import { formatXML } from './serialize'
 
 const svgNamespace = 'http://www.w3.org/2000/svg'
 
@@ -9,9 +10,14 @@ async function main(): Promise<void> {
 	try {
 		console.log('Content script running')
 
+		if (document.querySelector('#svg-screenshot-selector')) {
+			return
+		}
+
 		const { clientWidth, clientHeight } = document.documentElement
 
 		const svgElement = document.createElementNS(svgNamespace, 'svg')
+		svgElement.id = 'svg-screenshot-selector'
 		svgElement.setAttribute('viewBox', `0 0 ${clientWidth} ${clientHeight}`)
 		svgElement.style.position = 'fixed'
 		svgElement.style.top = '0px'
@@ -19,6 +25,7 @@ async function main(): Promise<void> {
 		svgElement.style.width = `${clientWidth}px`
 		svgElement.style.height = `${clientHeight}px`
 		svgElement.style.cursor = 'crosshair'
+		svgElement.style.zIndex = '99999999'
 
 		const backdrop = document.createElementNS(svgNamespace, 'rect')
 		backdrop.setAttribute('x', '0')
@@ -45,37 +52,43 @@ async function main(): Promise<void> {
 		maskCutout.setAttribute('fill', 'black')
 		mask.append(maskCutout)
 
-		let screenshotBounds: DOMRectReadOnly
+		let captureArea: DOMRectReadOnly
 		try {
 			await new Promise((resolve, reject) => {
+				window.addEventListener('keyup', event => {
+					if (event.key === 'Escape') {
+						reject(new Error('Aborted with Escape'))
+					}
+				})
 				svgElement.addEventListener('mousedown', event => {
-					const { clientX: cutoutX, clientY: cutoutY } = event
-					maskCutout.setAttribute('x', cutoutX.toString())
-					maskCutout.setAttribute('y', cutoutY.toString())
+					const { clientX: startX, clientY: startY } = event
 					svgElement.addEventListener('mousemove', event => {
-						maskCutout.setAttribute('width', (event.clientX - cutoutX).toString())
-						maskCutout.setAttribute('height', (event.clientY - cutoutY).toString())
-					})
-					window.addEventListener('keyup', event => {
-						if (event.key === 'Escape') {
-							reject(new Error('Aborted with Escape'))
-						}
+						const positionX = Math.min(startX, event.clientX)
+						const positionY = Math.min(startY, event.clientY)
+						maskCutout.setAttribute('x', positionX.toString())
+						maskCutout.setAttribute('y', positionY.toString())
+						maskCutout.setAttribute('width', Math.abs(event.clientX - startX).toString())
+						maskCutout.setAttribute('height', Math.abs(event.clientY - startY).toString())
 					})
 					svgElement.addEventListener('mouseup', resolve)
 				})
 				document.body.append(svgElement)
 			})
-			screenshotBounds = maskCutout.getBoundingClientRect()
+			captureArea = maskCutout.getBoundingClientRect()
 		} finally {
 			svgElement.remove()
 		}
 
-		const svgDocument = documentToSVG(document, {
-			clientBounds: screenshotBounds,
-		})
+		const svgDocument = documentToSVG(document, { captureArea })
 
 		console.log('Inlining resources')
-		await inlineResources(svgDocument.documentElement)
+		await inlineResources(svgDocument.documentElement, {
+			// Fetch resources from background page to not be constrained by CORS.
+			fetchAsDataURL: async url => {
+				const dataURL = await browser.runtime.sendMessage({ method: 'fetchResourceAsDataURL', payload: url })
+				return new URL(dataURL)
+			},
+		})
 
 		console.log('Pretty-printing SVG')
 		const formattedSVGDocument = formatXML(svgDocument)
