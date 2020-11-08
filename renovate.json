@@ -3,5 +3,6 @@
 	"rangeStrategy": "bump",
 	"semanticCommits": true,
 	"prCreation": "not-pending",
-	"masterIssue": true
+	"masterIssue": true,
+	"prHourlyLimit": 0
 }
