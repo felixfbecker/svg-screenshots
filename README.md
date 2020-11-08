@@ -1,5 +1,3 @@
-<img src="./images/screenshot.png" align="right" width="35%" alt="Screenshot of taking of a screenshot of Google" />
-
 # SVG Screenshots Browser Extension
 
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/nfakpcpmhhilkdpphcjgnokknpbpdllg?logo=google-chrome&logoColor=white)](https://chrome.google.com/webstore/detail/svg-screenshot/nfakpcpmhhilkdpphcjgnokknpbpdllg)
