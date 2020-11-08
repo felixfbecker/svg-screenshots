@@ -19,9 +19,9 @@ jobs:
       - run: npm run typecheck
       - run: npm run eslint
       - run: npm run build
-      - name: release
-        if: github.ref == 'refs/heads/main'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run semantic-release
+      # - name: release
+      #   if: github.ref == 'refs/heads/main'
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #   run: npm run semantic-release
