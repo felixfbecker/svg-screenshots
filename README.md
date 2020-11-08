@@ -1,5 +1,6 @@
 # SVG Screenshots Browser Extension
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/nfakpcpmhhilkdpphcjgnokknpbpdllg)](https://chrome.google.com/webstore/detail/svg-screenshot/nfakpcpmhhilkdpphcjgnokknpbpdllg)
 [![CI status](https://github.com/felixfbecker/svg-screenshots/workflows/ci/badge.svg?branch=main)](https://github.com/felixfbecker/svg-screenshots/actions)
 
 Browser extension to take semantic, scalable, accessible screenshots of websites, as SVG - as simple as taking a PNG screenshot.
