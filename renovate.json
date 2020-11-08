@@ -4,5 +4,11 @@
 	"semanticCommits": true,
 	"prCreation": "not-pending",
 	"masterIssue": true,
-	"prHourlyLimit": 0
+	"prHourlyLimit": 0,
+	"packageRules": [
+		{
+			"packagePatterns": ["^@types/"],
+			"automerge": true
+		}
+	]
 }
