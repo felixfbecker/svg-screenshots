@@ -37,7 +37,7 @@
 		"@sourcegraph/eslint-config": "^0.19.15",
 		"@sourcegraph/prettierrc": "^3.0.3",
 		"@types/file-saver": "^2.0.1",
-		"@types/firefox-webext-browser": "^70.0.1",
+		"@types/firefox-webext-browser": "^78.0.1",
 		"eslint": "^7.13.0",
 		"husky": "^4.3.0",
 		"parcel-bundler": "^1.12.4",
