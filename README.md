@@ -9,7 +9,7 @@ Browser extension to take semantic, scalable, accessible screenshots of websites
 SVG screenshots offer various benefits over normal PNG screenshots, while keeping the good parts:
 
 - **🖼 Flexible**: Freely select the region of the website you want to capture.
-- **↔️ Scalable graphics**: Screenshots never get pixelated when zooming in.
+- **💢 Scalable graphics**: Screenshots never get pixelated when zooming in.
 - **📝 Semantic**: Text can still be selected and copied to clipboard.
 - **🦻 Accessible**: SVG is annotated with ARIA attributes and can be read by screen readers.
 - **🖥 Paste into design tools**: SVGs will work in design tools like Illustrator, Figma, Sketch etc.
