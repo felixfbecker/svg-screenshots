@@ -1,5 +1,7 @@
 {
 	"extends": ["config:base"],
+	"timezone": "Europe/Berlin",
+	"schedule": ["on the 1st through 7th day of the month"],
 	"rangeStrategy": "bump",
 	"semanticCommits": true,
 	"prCreation": "not-pending",
@@ -9,6 +11,10 @@
 		{
 			"packagePatterns": ["^@types/"],
 			"automerge": true
+		},
+		{
+			"packageNames": ["dom-to-svg"],
+			"schedule": []
 		}
 	]
 }
