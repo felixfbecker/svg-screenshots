@@ -19,6 +19,15 @@ jobs:
       - run: npm run typecheck
       - run: npm run eslint
       - run: npm run build
+      # Upload a build for this branch to download and test
+      - run: zip -r svg-screenshots-chrome.zip dist
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: svg-screenshots-chrome
+          path: svg-screenshots-chrome.zip
+      # Release to Chrome store on main branch
       - name: release
         if: github.ref == 'refs/heads/main'
         env:
