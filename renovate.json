@@ -9,7 +9,7 @@
 	"prHourlyLimit": 0,
 	"node": {
 		"major": {
-			"enabled": false
+			"enabled": true
 		}
 	},
 	"regexManagers": [
