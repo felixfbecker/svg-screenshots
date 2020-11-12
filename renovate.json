@@ -19,7 +19,8 @@
 			"depNameTemplate": "node",
 			"lookupNameTemplate": "nodejs/node",
 			"datasourceTemplate": "github-tags",
-			"versioningTemplate": "node"
+			"versioningTemplate": "node",
+			"commitMessageTopic": "Node.js"
 		}
 	],
 	"packageRules": [
