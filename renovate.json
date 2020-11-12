@@ -19,8 +19,7 @@
 			"depNameTemplate": "node",
 			"lookupNameTemplate": "nodejs/node",
 			"datasourceTemplate": "github-tags",
-			"versioningTemplate": "node",
-			"commitMessageTopic": "Node.js"
+			"versioningTemplate": "node"
 		}
 	],
 	"packageRules": [
@@ -34,7 +33,8 @@
 		},
 		{
 			"packageNames": ["node"],
-			"extractVersion": "^v(?<version>.*)$"
+			"extractVersion": "^v(?<version>.*)$",
+			"commitMessageTopic": "Node.js"
 		}
 	]
 }
