@@ -7,6 +7,15 @@
 	"prCreation": "not-pending",
 	"masterIssue": true,
 	"prHourlyLimit": 0,
+	"regexManagers": [
+		{
+			"fileMatch": ["^.github/workflows/.+\\.ya?ml$"],
+			"matchStrings": ["node-version: ['\"]?(?<currentValue>[^'\"]*)['\"]?"],
+			"depNameTemplate": "node",
+			"lookupNameTemplate": "nodejs/node",
+			"datasourceTemplate": "github-tags"
+		}
+	],
 	"packageRules": [
 		{
 			"packagePatterns": ["^@types/"],
@@ -15,6 +24,10 @@
 		{
 			"packageNames": ["dom-to-svg"],
 			"schedule": []
+		},
+		{
+			"packageNames": ["node"],
+			"extractVersion": "^v(?<version>.*)$"
 		}
 	]
 }
