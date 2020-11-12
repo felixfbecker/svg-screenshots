@@ -8,6 +8,7 @@
 	"masterIssue": true,
 	"prHourlyLimit": 0,
 	"node": {
+		"supportPolicy": ["all"],
 		"major": {
 			"enabled": true
 		}
