@@ -7,13 +7,19 @@
 	"prCreation": "not-pending",
 	"masterIssue": true,
 	"prHourlyLimit": 0,
+	"node": {
+		"major": {
+			"enabled": false
+		}
+	},
 	"regexManagers": [
 		{
 			"fileMatch": ["^.github/workflows/.+\\.ya?ml$"],
 			"matchStrings": ["node-version: ['\"]?(?<currentValue>[^'\"]*)['\"]?"],
 			"depNameTemplate": "node",
 			"lookupNameTemplate": "nodejs/node",
-			"datasourceTemplate": "github-tags"
+			"datasourceTemplate": "github-tags",
+			"versioningTemplate": "node"
 		}
 	],
 	"packageRules": [
