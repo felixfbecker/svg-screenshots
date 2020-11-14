@@ -3,6 +3,7 @@ import './polyfill'
 import { documentToSVG, inlineResources } from 'dom-to-svg'
 import { saveAs } from 'file-saver'
 import { formatXML } from './serialize'
+import { AbortError } from './shared'
 
 const svgNamespace = 'http://www.w3.org/2000/svg'
 
@@ -57,7 +58,7 @@ async function main(): Promise<void> {
 			await new Promise((resolve, reject) => {
 				window.addEventListener('keyup', event => {
 					if (event.key === 'Escape') {
-						reject(new Error('Aborted with Escape'))
+						reject(new AbortError('Aborted with Escape'))
 					}
 				})
 				svgElement.addEventListener('mousedown', event => {
@@ -99,6 +100,9 @@ async function main(): Promise<void> {
 		console.log('Downloading')
 		saveAs(blob, `${document.title.replace(/["'/]/g, '')} Screenshot.svg`)
 	} catch (error) {
+		if (error?.name === 'AbortError') {
+			return
+		}
 		alert(error.message)
 		throw error
 	}
