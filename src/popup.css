@@ -1,0 +1,19 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	width: 15rem;
+}
+
+button {
+	width: 100%;
+	margin-top: 0.5em;
+	padding: 0.25em;
+	display: block;
+}
+
+h2 {
+	margin-bottom: 0.5em;
+	font-weight: 400;
+}

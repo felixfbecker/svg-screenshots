@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SVG Screenshot Options</title>
+		<link rel="stylesheet" href="./popup.css" />
+		<meta name="theme-color" content="dark light" />
+	</head>
+	<body>
+		<button type="button" id="capture-area-btn">Capture area</button>
+		<button type="button" id="capture-page-btn">Capture full page</button>
+
+		<h2>Options</h2>
+		<form name="options">
+			<div>
+				<label><input type="checkbox" name="minifySvg" /> Minify SVG</label>
+			</div>
+			<div>
+				<label><input type="checkbox" name="prettyPrintSvg" /> Pretty-print SVG</label>
+			</div>
+			<div>
+				<label><input type="checkbox" name="inlineResources" /> Inline resources</label>
+			</div>
+		</form>
+
+		<script src="./popup.ts"></script>
+	</body>
+</html>
