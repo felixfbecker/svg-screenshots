@@ -41,10 +41,12 @@ async function capture(area: CaptureArea): Promise<void> {
 	console.log('Capturing', area)
 
 	const captureArea = area === 'captureArea' ? await letUserSelectCaptureArea() : undefined
-	await delay(0)
 
 	document.documentElement.style.cursor = 'wait'
 	try {
+		// Give browser chance to render
+		await delay(0)
+
 		let svgDocument = documentToSVG(document, {
 			captureArea,
 		})
