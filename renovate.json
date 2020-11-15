@@ -30,7 +30,10 @@
 		},
 		{
 			"packageNames": ["dom-to-svg"],
-			"schedule": []
+			"schedule": [],
+			"minor": {
+				"semanticCommitType": "feat"
+			}
 		},
 		{
 			"packageNames": ["node"],
