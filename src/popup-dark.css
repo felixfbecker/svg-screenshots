@@ -1,0 +1,11 @@
+html {
+	background: #35363a;
+	border: 1px solid #181a1b;
+	color: white;
+}
+
+button,
+input[type='checkbox'],
+input[type='radio'] {
+	filter: invert(85%) hue-rotate(180deg); /* Make sure colors stay the same despite inverting */
+}
