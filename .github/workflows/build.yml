@@ -27,9 +27,9 @@ jobs:
         with:
           name: svg-screenshots-chrome
           path: svg-screenshots-chrome.zip
-      # Release to Chrome store on main branch
+      # Release to Chrome store on release branch
       - name: release
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/release'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
