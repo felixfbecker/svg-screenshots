@@ -20,6 +20,18 @@
 			<div>
 				<label><input type="checkbox" name="inlineResources" /> Inline resources</label>
 			</div>
+			<fieldset>
+				<h3>Target</h3>
+				<div>
+					<label><input type="radio" name="target" value="download" /> Download SVG</label>
+				</div>
+				<div>
+					<label><input type="radio" name="target" value="tab" /> Open SVG in new tab</label>
+				</div>
+				<div>
+					<label><input type="radio" name="target" value="clipboard" /> Copy SVG to clipboard</label>
+				</div>
+			</fieldset>
 		</form>
 
 		<script src="./popup.ts"></script>

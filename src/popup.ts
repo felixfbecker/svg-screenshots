@@ -1,7 +1,7 @@
 import './polyfill'
 
 import { applyDefaults, CaptureArea, Settings, SETTINGS_KEYS } from './shared'
-import { logErrors, once } from './util'
+import { assert, logErrors, once } from './util'
 
 document.addEventListener('DOMContentLoaded', logErrors(main))
 
@@ -45,20 +45,33 @@ async function main(): Promise<void> {
 	// Currently all boolean
 	const settings = applyDefaults((await browser.storage.sync.get(SETTINGS_KEYS)) as Settings)
 	for (const key of SETTINGS_KEYS) {
+		const value = settings[key]
 		const element = optionsForm.elements.namedItem(key)
-		if (!element) {
-			throw new Error(`Settings key ${key} not in form`)
+		assert(element, `Expected ${key} to exist in options form`)
+		if (typeof value === 'boolean') {
+			assert(
+				element instanceof HTMLInputElement && element.type === 'checkbox',
+				'Expected element to be checkbox'
+			)
+			const checkbox = element as HTMLInputElement
+			checkbox.checked = value
+		} else if (typeof value === 'string') {
+			assert(element instanceof RadioNodeList, 'Expected element to be RadioNodeList')
+			element.value = value
 		}
-		if (!(element instanceof HTMLInputElement) || element.type !== 'checkbox') {
-			throw new Error(`Settings key ${key} not a checkbox`)
-		}
-		element.checked = settings[key]
 	}
 	optionsForm.addEventListener(
 		'change',
-		logErrors(async event => {
-			if (event.target instanceof HTMLInputElement && event.target.type === 'checkbox') {
-				await browser.storage.sync.set({ [event.target.name]: event.target.checked })
+		logErrors(async ({ target }) => {
+			if (!(target instanceof HTMLInputElement)) {
+				return
+			}
+			if (target.type === 'checkbox') {
+				await browser.storage.sync.set({ [target.name]: target.checked })
+			} else if (target.type === 'radio') {
+				await browser.storage.sync.set({ [target.name]: target.value })
+			} else {
+				throw new Error(`Unexpected form element ${target.type}`)
 			}
 		})
 	)

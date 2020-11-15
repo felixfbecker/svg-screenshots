@@ -28,3 +28,13 @@ export const once = <T extends any[]>(
 		}
 		emitter.addListener(listener)
 	})
+
+class AssertionError extends Error {
+	public readonly name = 'AssertionError'
+}
+
+export function assert(condition: any, message: string): asserts condition {
+	if (!condition) {
+		throw new AssertionError(message)
+	}
+}

@@ -13,7 +13,14 @@ button {
 	display: block;
 }
 
-h2 {
+fieldset {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+h2,
+h3 {
 	margin-bottom: 0.5em;
 	font-weight: 400;
 }

@@ -81,8 +81,30 @@ async function capture(area: CaptureArea): Promise<void> {
 
 		const blob = new Blob([svgString], { type: 'image/svg+xml' })
 		console.log('SVG size after minification:', prettyBytes(blob.size))
-		console.log('Downloading')
-		saveAs(blob, `${document.title.replace(/["'/]/g, '')} Screenshot.svg`)
+		if (settings.target === 'download') {
+			console.log('Downloading')
+			saveAs(blob, `${document.title.replace(/["'/]/g, '')} Screenshot.svg`)
+		} else if (settings.target === 'clipboard') {
+			console.log('Copying to clipboard')
+			const plainTextBlob = new Blob([svgString], { type: 'text/plain' })
+			try {
+				// Copying image/svg+xml is not yet supported in Chrome
+				await navigator.clipboard.write([
+					new ClipboardItem({
+						[blob.type]: blob,
+						'text/plain': plainTextBlob,
+					}),
+				])
+			} catch {
+				await navigator.clipboard.writeText(svgString)
+			}
+		} else if (settings.target === 'tab') {
+			console.log('Opening in new tab')
+			const url = window.URL.createObjectURL(blob)
+			window.open(url, '_blank', 'noopener')
+		} else {
+			throw new Error(`Unexpected SVG target ${String(settings.target)}`)
+		}
 	} finally {
 		document.documentElement.style.cursor = ''
 	}
