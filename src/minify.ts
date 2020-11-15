@@ -36,7 +36,6 @@ import convertEllipseToCircle from 'svgo/plugins/convertEllipseToCircle'
 import removeEmptyAttrs from 'svgo/plugins/removeEmptyAttrs'
 import removeEmptyContainers from 'svgo/plugins/removeEmptyContainers'
 import mergePaths from 'svgo/plugins/mergePaths'
-import removeUnusedNS from 'svgo/plugins/removeUnusedNS'
 import reusePaths from 'svgo/plugins/reusePaths'
 import removeAttrs from 'svgo/plugins/removeAttrs'
 import removeStyleElement from 'svgo/plugins/removeStyleElement'
@@ -77,13 +76,15 @@ const pluginsArray = [
 	removeEmptyAttrs,
 	removeEmptyContainers,
 	mergePaths,
-	removeUnusedNS,
 	// This currently throws an error
 	// removeOffCanvasPaths,
 	reusePaths,
 	removeAttrs,
 	removeStyleElement,
 	removeScriptElement,
+	// Bug: when this is run it removes the xlink namespace, but reusePaths adds <use> elements with xlink:href
+	// without making sure the namespace exists
+	// removeUnusedNS,
 ]
 for (const plugin of pluginsArray) {
 	plugin.active = true
