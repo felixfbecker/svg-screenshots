@@ -18,5 +18,6 @@ SVG screenshots offer various benefits over normal PNG screenshots, while keepin
 - **🖥 Paste into design tools**: SVGs will work in design tools like Illustrator, Figma, Sketch etc.
 - **🔗 Interactive**: Links are still clickable.
 - **📦 Self-contained**: Inlines external resources like images, fonts, etc.
-- **📸 Static**: Styles and layout are recorded at the time of snapshot and will not change when viewed on different machines.
+- **📸 Static**: Styles and layout are recorded at the time of snapshot and will not change.
 - **🗜 Small**: Depending on the content, SVGs can be magnitudes smaller than PNGs and compress loslessly.
+- **🛡 Secure**: The SVG will not run any JavaScript.
