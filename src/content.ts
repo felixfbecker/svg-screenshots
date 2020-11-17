@@ -47,11 +47,12 @@ async function capture(area: CaptureArea): Promise<void> {
 		// Give browser chance to render
 		await delay(0)
 
+		const settings = applyDefaults((await browser.storage.sync.get(SETTINGS_KEYS)) as Settings)
+
 		let svgDocument = documentToSVG(document, {
 			captureArea,
+			keepLinks: settings.keepLinks,
 		})
-
-		const settings = applyDefaults((await browser.storage.sync.get(SETTINGS_KEYS)) as Settings)
 
 		if (settings.inlineResources) {
 			console.log('Inlining resources')
