@@ -1,7 +1,8 @@
 {
 	"private": true,
 	"engines": {
-		"node": "^14.0.0"
+		"node": "^15.2.0",
+		"npm": "^7.0.8"
 	},
 	"scripts": {
 		"prettier": "prettier --check '**/*.{yml,ts,json}'",
