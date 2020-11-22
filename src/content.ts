@@ -147,15 +147,17 @@ async function letUserSelectCaptureArea(): Promise<DOMRectReadOnly> {
 
 	let captureArea: DOMRectReadOnly
 	try {
-		await new Promise((resolve, reject) => {
+		await new Promise<void>((resolve, reject) => {
 			window.addEventListener('keyup', event => {
 				if (event.key === 'Escape') {
 					reject(new AbortError('Aborted with Escape'))
 				}
 			})
 			svgElement.addEventListener('mousedown', event => {
+				event.preventDefault()
 				const { clientX: startX, clientY: startY } = event
 				svgElement.addEventListener('mousemove', event => {
+					event.preventDefault()
 					const positionX = Math.min(startX, event.clientX)
 					const positionY = Math.min(startY, event.clientY)
 					maskCutout.setAttribute('x', positionX.toString())
@@ -163,7 +165,14 @@ async function letUserSelectCaptureArea(): Promise<DOMRectReadOnly> {
 					maskCutout.setAttribute('width', Math.abs(event.clientX - startX).toString())
 					maskCutout.setAttribute('height', Math.abs(event.clientY - startY).toString())
 				})
-				svgElement.addEventListener('mouseup', resolve, { once: true })
+				svgElement.addEventListener(
+					'mouseup',
+					event => {
+						event.preventDefault()
+						resolve()
+					},
+					{ once: true }
+				)
 			})
 			document.body.append(svgElement)
 		})
