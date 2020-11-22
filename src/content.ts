@@ -1,6 +1,6 @@
 import './polyfill'
 
-import { documentToSVG, inlineResources } from 'dom-to-svg'
+import { documentToSVG } from 'dom-to-svg'
 import { saveAs } from 'file-saver'
 import { formatXML } from './serialize'
 import { AbortError, svgNamespace, once } from './util'
@@ -54,26 +54,21 @@ async function capture(area: CaptureArea): Promise<void> {
 			keepLinks: settings.keepLinks,
 		})
 
-		if (settings.inlineResources) {
-			console.log('Inlining resources')
-			await inlineResources(svgDocument.documentElement, {
-				// Fetch resources from background page to not be constrained by CORS.
-				fetchAsDataURL: async url => {
-					const dataURL = await browser.runtime.sendMessage({
-						method: 'fetchResourceAsDataURL',
-						payload: url,
-					})
-					return new URL(dataURL)
-				},
-			})
-		}
-
 		console.log('Pretty-printing SVG')
 		if (settings.prettyPrintSvg && !settings.minifySvg) {
 			svgDocument = formatXML(svgDocument)
 		}
 
 		let svgString = new XMLSerializer().serializeToString(svgDocument)
+
+		if (settings.inlineResources) {
+			console.log('Inlining resources')
+			// Do post-processing in the background page
+			svgString = await browser.runtime.sendMessage({
+				method: 'postProcessSVG',
+				payload: svgString,
+			})
+		}
 
 		if (settings.minifySvg) {
 			console.log('Minifying')
