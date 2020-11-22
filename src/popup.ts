@@ -42,7 +42,7 @@ async function main(): Promise<void> {
 
 	const optionsForm = document.forms.namedItem('options')!
 
-	// Currently all boolean
+	// Set initial settings in the DOM
 	const settings = applyDefaults((await browser.storage.sync.get(SETTINGS_KEYS)) as Settings)
 	for (const key of SETTINGS_KEYS) {
 		const value = settings[key]
@@ -60,6 +60,7 @@ async function main(): Promise<void> {
 			element.value = value
 		}
 	}
+	// Sync form changes to settings
 	optionsForm.addEventListener(
 		'change',
 		logErrors(async ({ target }) => {
