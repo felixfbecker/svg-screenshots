@@ -87,18 +87,15 @@ async function capture(area: CaptureArea): Promise<void> {
 			saveAs(blob, `${document.title.replace(/["'/]/g, '')} Screenshot.svg`)
 		} else if (settings.target === 'clipboard') {
 			console.log('Copying to clipboard')
-			const plainTextBlob = new Blob([svgString], { type: 'text/plain' })
-			try {
-				// Copying image/svg+xml is not yet supported in Chrome
-				await navigator.clipboard.write([
-					new ClipboardItem({
-						[blob.type]: blob,
-						'text/plain': plainTextBlob,
-					}),
-				])
-			} catch {
-				await navigator.clipboard.writeText(svgString)
-			}
+			await navigator.clipboard.writeText(svgString)
+			// const plainTextBlob = new Blob([svgString], { type: 'text/plain' })
+			// Copying image/svg+xml is not yet supported in Chrome and crashes the tab
+			// await navigator.clipboard.write([
+			// 	new ClipboardItem({
+			// 		[blob.type]: blob,
+			// 		'text/plain': plainTextBlob,
+			// 	}),
+			// ])
 		} else if (settings.target === 'tab') {
 			console.log('Opening in new tab')
 			const url = window.URL.createObjectURL(blob)
