@@ -20,7 +20,7 @@ const createCaptureButtonHandler = (area: CaptureArea): (() => void) =>
 		await browser.tabs.executeScript(activeTab.id, {
 			file: '/src/content.js',
 		})
-		const message = {
+		const captureMessage = {
 			method: 'capture',
 			payload: {
 				area,
@@ -28,7 +28,8 @@ const createCaptureButtonHandler = (area: CaptureArea): (() => void) =>
 		}
 		console.log('Waiting for content page to start capturing')
 		await started
-		await browser.tabs.sendMessage(activeTab.id, message)
+		console.log('Received started message, sending capture message', captureMessage)
+		await browser.tabs.sendMessage(activeTab.id, captureMessage)
 		window.close()
 	})
 

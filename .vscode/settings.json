@@ -1,3 +1,9 @@
 {
 	"typescript.tsdk": "node_modules/typescript/lib",
+	"json.schemas": [
+		{
+			"fileMatch": ["manifest.json"],
+			"url": "https://json.schemastore.org/webextension",
+		},
+	],
 }

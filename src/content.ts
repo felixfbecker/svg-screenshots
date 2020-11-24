@@ -2,7 +2,7 @@ import './polyfill'
 
 import { documentToSVG } from 'dom-to-svg'
 import { saveAs } from 'file-saver'
-import { formatXML } from './serialize'
+import formatXML from 'xml-formatter'
 import { AbortError, svgNamespace, once } from './util'
 import { applyDefaults, CaptureArea, Settings, SETTINGS_KEYS } from './shared'
 import delay from 'delay'
@@ -49,15 +49,10 @@ async function capture(area: CaptureArea): Promise<void> {
 
 		const settings = applyDefaults((await browser.storage.sync.get(SETTINGS_KEYS)) as Settings)
 
-		let svgDocument = documentToSVG(document, {
+		const svgDocument = documentToSVG(document, {
 			captureArea,
 			keepLinks: settings.keepLinks,
 		})
-
-		console.log('Pretty-printing SVG')
-		if (settings.prettyPrintSvg && !settings.minifySvg) {
-			svgDocument = formatXML(svgDocument)
-		}
 
 		let svgString = new XMLSerializer().serializeToString(svgDocument)
 
@@ -72,7 +67,12 @@ async function capture(area: CaptureArea): Promise<void> {
 
 		if (settings.minifySvg) {
 			console.log('Minifying')
-			svgString = await minifySvg(svgString, { pretty: settings.prettyPrintSvg })
+			svgString = await minifySvg(svgString)
+		}
+
+		if (settings.prettyPrintSvg && !settings.minifySvg) {
+			console.log('Pretty-printing SVG')
+			svgString = formatXML(svgString)
 		}
 
 		const blob = new Blob([svgString], { type: 'image/svg+xml' })
@@ -176,7 +176,14 @@ async function letUserSelectCaptureArea(): Promise<DOMRectReadOnly> {
 			})
 			document.body.append(svgElement)
 		})
-		captureArea = maskCutout.getBoundingClientRect()
+		// Note: Need to build the DOMRect from the properties,
+		// getBoundingClientRect() returns collapsed rectangle in Firefox
+		captureArea = new DOMRectReadOnly(
+			maskCutout.x.baseVal.value,
+			maskCutout.y.baseVal.value,
+			maskCutout.width.baseVal.value,
+			maskCutout.height.baseVal.value
+		)
 	} finally {
 		svgElement.remove()
 	}

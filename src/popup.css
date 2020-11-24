@@ -2,9 +2,11 @@
 	box-sizing: border-box;
 }
 
-html {
-	width: 15rem;
-	border: 1px solid #f1f3f4;
+body {
+	width: 192px;
+	font-size: 12px;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 button {

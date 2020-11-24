@@ -108,7 +108,7 @@ function optimizePluginsArray(plugins: SvgoPlugin[]): SvgoPlugin[][] {
 		}, [])
 }
 
-export async function minifySvg(svgString: string, { pretty }: { pretty: boolean }): Promise<string> {
+export async function minifySvg(svgString: string): Promise<string> {
 	const parsedSvg = await new Promise<{ error?: any }>(resolve => svg2js(svgString, resolve))
 	if (parsedSvg.error) {
 		throw parsedSvg.error
@@ -116,5 +116,5 @@ export async function minifySvg(svgString: string, { pretty }: { pretty: boolean
 
 	plugins(parsedSvg, { input: 'string' }, pluginsData)
 
-	return js2svg(parsedSvg, { pretty }).data
+	return js2svg(parsedSvg, {}).data
 }
