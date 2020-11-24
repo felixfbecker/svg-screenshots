@@ -99,8 +99,8 @@ function optimizePluginsArray(plugins: SvgoPlugin[]): SvgoPlugin[][] {
 		.map(item => [item])
 		.reduce((array: SvgoPlugin[][], item) => {
 			const last = array[array.length - 1]
-			if (last && item[0].type === last[0].type) {
-				last.push(item[0])
+			if (last && item[0]!.type === last[0]!.type) {
+				last.push(item[0]!)
 			} else {
 				array.push(item)
 			}
