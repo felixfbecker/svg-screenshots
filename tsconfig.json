@@ -11,9 +11,9 @@
 		"strict": true,
 		"skipLibCheck": true,
 		"skipDefaultLibCheck": true,
-		"baseUrl": "src",
+		"noUncheckedIndexedAccess": true,
 		"paths": {
-			"*": ["types/*", "./*"],
+			"*": ["./src/types/*", "./*"],
 		},
 	},
 	"include": ["src/**/*"],
