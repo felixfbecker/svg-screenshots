@@ -31,11 +31,13 @@
 		{
 			"packageNames": ["dom-to-svg"],
 			"updateTypes": ["minor"],
+			"prCreation": "immediate",
 			"schedule": [],
 			"semanticCommitType": "feat"
 		},
 		{
 			"packageNames": ["dom-to-svg"],
+			"prCreation": "immediate",
 			"schedule": []
 		},
 		{
