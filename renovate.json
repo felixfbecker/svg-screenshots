@@ -33,7 +33,7 @@
 			"updateTypes": ["minor"],
 			"prCreation": "immediate",
 			"schedule": [],
-			"commitMessage": "{{log logJSON.versions.[0].changes}}",
+			"commitMessage": "{{log 'hello' logJSON.versions.[0].changes}}",
 			"semanticCommitType": "feat"
 		},
 		{
