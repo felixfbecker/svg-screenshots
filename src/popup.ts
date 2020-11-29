@@ -38,8 +38,8 @@ async function main(): Promise<void> {
 		.querySelector<HTMLButtonElement>('#capture-area-btn')!
 		.addEventListener('click', createCaptureButtonHandler('captureArea'))
 	document
-		.querySelector<HTMLButtonElement>('#capture-page-btn')!
-		.addEventListener('click', createCaptureButtonHandler('capturePage'))
+		.querySelector<HTMLButtonElement>('#capture-viewport-btn')!
+		.addEventListener('click', createCaptureButtonHandler('captureViewport'))
 
 	const optionsForm = document.forms.namedItem('options')!
 
