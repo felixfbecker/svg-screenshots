@@ -2,26 +2,38 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"label": "TypeScript watch",
+			"detail": "Watch files and typecheck them on file changes",
 			"type": "typescript",
 			"tsconfig": "tsconfig.json",
 			"option": "watch",
 			"problemMatcher": ["$tsc-watch"],
+			"isBackground": true,
 			"group": "build",
-			"label": "tsc: watch - tsconfig.json",
 			"runOptions": {
 				"runOn": "folderOpen",
 			},
 		},
 		{
+			"label": "Parcel watch",
+			"detail": "Watch files and build extension on file changes",
 			"type": "npm",
 			"script": "watch",
+			"isBackground": true,
 			"group": "build",
 			"problemMatcher": [],
-			"label": "npm: watch",
-			"detail": "parcel watch manifest.json",
 			"runOptions": {
 				"runOn": "folderOpen",
 			},
+		},
+		{
+			"label": "Firefox watch",
+			"detail": "Watch files and build Firefox extension ZIP on file changes",
+			"type": "npm",
+			"script": "firefox:watch",
+			"group": "build",
+			"problemMatcher": [],
+			"isBackground": true,
 		},
 	],
 }

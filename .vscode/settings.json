@@ -1,5 +1,6 @@
 {
 	"typescript.tsdk": "node_modules/typescript/lib",
+	"npm.packageManager": "npm",
 	"json.schemas": [
 		{
 			"fileMatch": ["manifest.json"],
