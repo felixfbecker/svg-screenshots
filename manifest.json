@@ -5,14 +5,16 @@
 	"version": "0.0.0",
 	"permissions": ["activeTab", "<all_urls>", "storage"],
 	"icons": {
-		"200": "/images/icon.png"
+		"128": "/images/icon_128.png",
+		"256": "/images/icon_256.png"
 	},
 	"web_accessible_resources": ["src/content.ts"],
 	"browser_action": {
 		"default_popup": "src/popup.html",
 		"default_title": "Capture SVG screenshot",
 		"default_icon": {
-			"200": "/images/icon.png"
+			"128": "/images/icon_128.png",
+			"256": "/images/icon_256.png"
 		}
 	},
 	"background": {
