@@ -5,8 +5,8 @@ import { assert, logErrors, once } from './util'
 
 document.addEventListener('DOMContentLoaded', logErrors(main))
 
-const createCaptureButtonHandler = (area: CaptureArea): (() => void) =>
-	logErrors(async () => {
+const createCaptureButtonHandler = (area: CaptureArea): (() => void) => async () => {
+	try {
 		console.log('Executing content script in tab')
 		const [activeTab] = await browser.tabs.query({ active: true, currentWindow: true })
 		console.log('activeTab', activeTab)
@@ -31,7 +31,11 @@ const createCaptureButtonHandler = (area: CaptureArea): (() => void) =>
 		console.log('Received started message, sending capture message', captureMessage)
 		await browser.tabs.sendMessage(activeTab.id, captureMessage)
 		window.close()
-	})
+	} catch (error) {
+		console.error(error)
+		alert(error.message)
+	}
+}
 
 async function main(): Promise<void> {
 	document
