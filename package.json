@@ -35,7 +35,7 @@
 	"dependencies": {
 		"delay": "^4.4.0",
 		"dom-to-svg": "^0.9.4",
-		"file-saver": "^2.0.2",
+		"file-saver": "^2.0.5",
 		"pretty-bytes": "^5.4.1",
 		"svgo": "^1.3.2",
 		"webextension-polyfill": "^0.7.0",
