@@ -21,18 +21,31 @@ jobs:
       - run: npm run build
       # Upload a build for this branch to download and test
       - run: zip -r svg-screenshots-chrome.zip dist
-      - name: Upload artifacts
+        if: always()
+      - name: Upload Chrome artifact
         if: always()
         uses: actions/upload-artifact@v2
         with:
           name: svg-screenshots-chrome
           path: svg-screenshots-chrome.zip
-      # Release to Chrome store on release branch
+      - run: zip -r svg-screenshots-firefox.xpi dist
+        if: always()
+      - name: Upload Firefox artifact
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: svg-screenshots-firefox
+          path: svg-screenshots-firefox.xpi
+      # Release to Chrome and Firefox store on release branch
       - name: release
         if: github.ref == 'refs/heads/release'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Google web store
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          # Firefox addons store
+          FIREFOX_EMAIL: ${{ secrets.FIREFOX_EMAIL }}
+          FIREFOX_PASSWORD: ${{ secrets.FIREFOX_PASSWORD }}
         run: npm run semantic-release
