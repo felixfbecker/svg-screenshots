@@ -2,8 +2,8 @@
 
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/nfakpcpmhhilkdpphcjgnokknpbpdllg?logo=google-chrome&logoColor=white)](https://chrome.google.com/webstore/detail/svg-screenshot/nfakpcpmhhilkdpphcjgnokknpbpdllg)
 [![Firefox Add-on](https://img.shields.io/amo/v/svg-screenshots?logo=firefox&logoColor=white&label=firefox+add-on)](https://addons.mozilla.org/en-US/firefox/addon/svg-screenshots/)
-[![main build status](https://img.shields.io/github/workflow/status/felixfbecker/svg-screenshots/build/main?label=main&logo=github)](https://github.com/felixfbecker/svg-screenshots/actions)
-[![release build status](https://img.shields.io/github/workflow/status/felixfbecker/svg-screenshots/build/release?label=release&logo=github)](https://github.com/felixfbecker/svg-screenshots/actions)
+[![main build status](https://img.shields.io/github/workflow/status/felixfbecker/svg-screenshots/build/main?label=main&logo=github)](https://github.com/felixfbecker/svg-screenshots/actions?query=branch%3Amain)
+[![release build status](https://img.shields.io/github/workflow/status/felixfbecker/svg-screenshots/build/release?label=release&logo=github)](https://github.com/felixfbecker/svg-screenshots/actions?query=branch%3Arelease)
 ![license: MIT](https://img.shields.io/github/license/felixfbecker/dom-to-svg)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
