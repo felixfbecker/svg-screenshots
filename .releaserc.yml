@@ -40,9 +40,9 @@ publish:
       - path: *chromeZipPath
       - path: *firefoxXpiPath
   # Publish the the Chrome web store
-  # - path: semantic-release-chrome
-  #   asset: *chromeZipPath
-  #   extensionId: nfakpcpmhhilkdpphcjgnokknpbpdllg
+  - path: semantic-release-chrome
+    asset: *chromeZipPath
+    extensionId: nfakpcpmhhilkdpphcjgnokknpbpdllg
   # Publish to Mozilla Add-on store
   - path: semantic-release-firefox
     xpiPath: *firefoxXpiPath
