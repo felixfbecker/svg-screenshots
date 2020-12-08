@@ -1,3 +1,5 @@
+<img src="images/icon_256.png" height="100px" width="100px" align="left" alt="" />
+
 # SVG Screenshots Browser Extension
 
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/nfakpcpmhhilkdpphcjgnokknpbpdllg?logo=google-chrome&logoColor=white)](https://chrome.google.com/webstore/detail/svg-screenshot/nfakpcpmhhilkdpphcjgnokknpbpdllg)
