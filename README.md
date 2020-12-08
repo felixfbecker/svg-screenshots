@@ -1,4 +1,4 @@
-<img src="images/icon_256.png" height="100px" width="100px" align="left" alt="" />
+<img src="images/icon_256.png" height="70px" width="70px" align="left" alt="" />
 
 # SVG Screenshots Browser Extension
 
