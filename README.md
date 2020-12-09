@@ -28,6 +28,8 @@ SVG screenshots offer various benefits over normal PNG screenshots, while keepin
 
 ## Install
 
+Install from the official extension stores:
+
 - [Chrome](https://chrome.google.com/webstore/detail/svg-screenshot/nfakpcpmhhilkdpphcjgnokknpbpdllg)
 - [Firefox](https://addons.mozilla.org/en-US/firefox/addon/svg-screenshots/)
 
