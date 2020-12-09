@@ -25,3 +25,8 @@ SVG screenshots offer various benefits over normal PNG screenshots, while keepin
 - **📸 Static**: Styles and layout are recorded at the time of snapshot and will not change.
 - **🗜 Small**: Depending on the content, SVGs can be magnitudes smaller than PNGs and compress loslessly.
 - **🛡 Secure**: The SVG will not run any JavaScript.
+
+## Install
+
+- [Chrome](https://chrome.google.com/webstore/detail/svg-screenshot/nfakpcpmhhilkdpphcjgnokknpbpdllg)
+- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/svg-screenshots/)
