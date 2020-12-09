@@ -30,3 +30,11 @@ SVG screenshots offer various benefits over normal PNG screenshots, while keepin
 
 - [Chrome](https://chrome.google.com/webstore/detail/svg-screenshot/nfakpcpmhhilkdpphcjgnokknpbpdllg)
 - [Firefox](https://addons.mozilla.org/en-US/firefox/addon/svg-screenshots/)
+
+## Examples
+
+These full-page SVG screenshots were taken with the browser extension:
+
+![Google](examples/google.svg)
+
+![Hacker News](examples/hackernews.svg)
