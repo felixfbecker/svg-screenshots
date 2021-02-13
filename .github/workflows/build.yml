@@ -1,6 +1,6 @@
 name: build
 
-on: [push]
+on: [push, pull_request]
 
 env:
   FORCE_COLOR: 3
@@ -38,7 +38,7 @@ jobs:
           path: svg-screenshots-firefox.xpi
       # Release to Chrome and Firefox store on release branch
       - name: release
-        if: github.ref == 'refs/heads/release'
+        if: github.event_name == 'push' && github.repository_owner == 'felixfbecker' && github.ref == 'refs/heads/release'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Google web store
