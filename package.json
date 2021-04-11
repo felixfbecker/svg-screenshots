@@ -34,7 +34,7 @@
 	},
 	"dependencies": {
 		"delay": "^5.0.0",
-		"dom-to-svg": "^0.11.4",
+		"dom-to-svg": "^0.11.6",
 		"file-saver": "^2.0.5",
 		"pretty-bytes": "^5.4.1",
 		"svgo": "^2.3.0",
