@@ -5,37 +5,39 @@ import { assert, logErrors, once } from './util'
 
 document.addEventListener('DOMContentLoaded', logErrors(main))
 
-const createCaptureButtonHandler = (area: CaptureArea): (() => void) => async () => {
-	try {
-		console.log('Executing content script in tab')
-		const [activeTab] = await browser.tabs.query({ active: true, currentWindow: true })
-		console.log('activeTab', activeTab)
-		if (!activeTab?.id) {
-			return
+const createCaptureButtonHandler =
+	(area: CaptureArea): (() => void) =>
+	async () => {
+		try {
+			console.log('Executing content script in tab')
+			const [activeTab] = await browser.tabs.query({ active: true, currentWindow: true })
+			console.log('activeTab', activeTab)
+			if (!activeTab?.id) {
+				return
+			}
+			const started = once(
+				browser.runtime.onMessage,
+				(message, sender) => message.method === 'started' && sender.tab?.id === activeTab.id
+			)
+			await browser.tabs.executeScript(activeTab.id, {
+				file: '/src/content.js',
+			})
+			const captureMessage = {
+				method: 'capture',
+				payload: {
+					area,
+				},
+			}
+			console.log('Waiting for content page to start capturing')
+			await started
+			console.log('Received started message, sending capture message', captureMessage)
+			await browser.tabs.sendMessage(activeTab.id, captureMessage)
+			window.close()
+		} catch (error) {
+			console.error(error)
+			alert(error.message)
 		}
-		const started = once(
-			browser.runtime.onMessage,
-			(message, sender) => message.method === 'started' && sender.tab?.id === activeTab.id
-		)
-		await browser.tabs.executeScript(activeTab.id, {
-			file: '/src/content.js',
-		})
-		const captureMessage = {
-			method: 'capture',
-			payload: {
-				area,
-			},
-		}
-		console.log('Waiting for content page to start capturing')
-		await started
-		console.log('Received started message, sending capture message', captureMessage)
-		await browser.tabs.sendMessage(activeTab.id, captureMessage)
-		window.close()
-	} catch (error) {
-		console.error(error)
-		alert(error.message)
 	}
-}
 
 async function main(): Promise<void> {
 	document

@@ -22,7 +22,7 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
 
 async function postProcessSVG(svg: string): Promise<string> {
 	const svgDocument = new DOMParser().parseFromString(svg, 'image/svg+xml')
-	const svgRootElement = (svgDocument.documentElement as Element) as SVGSVGElement
+	const svgRootElement = svgDocument.documentElement as Element as SVGSVGElement
 	// Append to DOM so SVG elements are attached to a window/have defaultView, so window.getComputedStyle() works
 	// This is safe, the generated SVG contains no JavaScript and even if it did, the background page CSP disallows any external or inline scripts.
 	document.body.prepend(svgRootElement)

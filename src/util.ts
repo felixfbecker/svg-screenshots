@@ -7,9 +7,11 @@ export class AbortError extends Error {
 	}
 }
 
-export const logErrors = <A extends any[]>(func: (...args: A) => Promise<void>) => (...args: A): void => {
-	func(...args).catch(console.error)
-}
+export const logErrors =
+	<A extends any[]>(func: (...args: A) => Promise<void>) =>
+	(...args: A): void => {
+		func(...args).catch(console.error)
+	}
 
 /**
  * Returns a Promise that resolves once the given event emits.
