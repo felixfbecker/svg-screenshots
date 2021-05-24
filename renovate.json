@@ -41,6 +41,11 @@
 			"schedule": []
 		},
 		{
+			"packageNames": ["semantic-release-firefox"],
+			"prCreation": "immediate",
+			"schedule": []
+		},
+		{
 			"packageNames": ["node"],
 			"extractVersion": "^v(?<version>.*)$",
 			"commitMessageTopic": "Node.js",
