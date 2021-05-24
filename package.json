@@ -38,7 +38,7 @@
 		"file-saver": "^2.0.5",
 		"pretty-bytes": "^5.4.1",
 		"svgo": "^2.3.0",
-		"webextension-polyfill": "^0.7.0",
+		"webextension-polyfill": "^0.8.0",
 		"xml-formatter": "^2.4.0"
 	},
 	"devDependencies": {
