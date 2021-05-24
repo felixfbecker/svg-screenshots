@@ -39,10 +39,6 @@ publish:
     assets:
       - path: *chromeZipPath
       - path: *firefoxXpiPath
-  # Publish the the Chrome web store
-  - path: semantic-release-chrome
-    asset: *chromeZipPath
-    extensionId: nfakpcpmhhilkdpphcjgnokknpbpdllg
   # Publish to Mozilla Add-on store
   - path: semantic-release-firefox
     xpiPath: *firefoxXpiPath
@@ -67,3 +63,7 @@ publish:
       - It uses `storage` to persist user settings.
 
       The warning about usage of the `Function` constructor is a popular polyfill for Function.prototype.bind in the dependency chain.
+  # Publish to the Chrome web store
+  - path: semantic-release-chrome
+    asset: *chromeZipPath
+    extensionId: nfakpcpmhhilkdpphcjgnokknpbpdllg
