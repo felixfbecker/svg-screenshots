@@ -13,7 +13,8 @@
 		"firefox:start": "web-ext run",
 		"firefox:build": "web-ext build --overwrite-dest",
 		"firefox:watch": "web-ext build --as-needed --overwrite-dest",
-		"semantic-release": "semantic-release"
+		"semantic-release": "semantic-release",
+		"prepare": "husky install"
 	},
 	"webExt": {
 		"sourceDir": "./dist/"
@@ -26,11 +27,6 @@
 		"extends": [
 			"@commitlint/config-conventional"
 		]
-	},
-	"husky": {
-		"hooks": {
-			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-		}
 	},
 	"dependencies": {
 		"delay": "^5.0.0",
@@ -50,7 +46,7 @@
 		"@types/file-saver": "^2.0.2",
 		"@types/firefox-webext-browser": "^82.0.0",
 		"eslint": "^7.27.0",
-		"husky": "^4.3.0",
+		"husky": "^6.0.0",
 		"parcel-bundler": "^1.12.5",
 		"parcel-plugin-web-extension": "^1.6.1",
 		"parcel-plugin-wrapper": "^0.2.3",
