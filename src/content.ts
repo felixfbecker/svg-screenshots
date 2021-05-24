@@ -1,13 +1,14 @@
 import './polyfill'
 
+import delay from 'delay'
 import { documentToSVG } from 'dom-to-svg'
 import { saveAs } from 'file-saver'
-import formatXML from 'xml-formatter'
-import { AbortError, svgNamespace, once } from './util'
-import { applyDefaults, CaptureArea, Settings, SETTINGS_KEYS } from './shared'
-import delay from 'delay'
 import prettyBytes from 'pretty-bytes'
+import formatXML from 'xml-formatter'
+
 import { minifySvg } from './minify'
+import { applyDefaults, CaptureArea, Settings, SETTINGS_KEYS } from './shared'
+import { AbortError, svgNamespace, once } from './util'
 
 async function main(): Promise<void> {
 	console.log('Content script running')

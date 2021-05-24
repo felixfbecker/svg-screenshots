@@ -10,6 +10,7 @@ declare module 'svgo' {
 }
 
 declare module 'svgo/plugins/*' {
+	// eslint-disable-next-line import/order
 	import { SvgoPlugin } from 'svgo'
 	var plugin: SvgoPlugin
 	export = plugin
