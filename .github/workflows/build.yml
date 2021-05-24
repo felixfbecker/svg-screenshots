@@ -48,4 +48,5 @@ jobs:
           # Firefox addons store
           FIREFOX_EMAIL: ${{ secrets.FIREFOX_EMAIL }}
           FIREFOX_PASSWORD: ${{ secrets.FIREFOX_PASSWORD }}
+          FIREFOX_TOTP_SECRET: ${{ secrets.FIREFOX_TOTP_SECRET }}
         run: npm run semantic-release
