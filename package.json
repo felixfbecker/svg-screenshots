@@ -50,7 +50,7 @@
 		"parcel-bundler": "^1.12.5",
 		"parcel-plugin-web-extension": "^1.6.1",
 		"parcel-plugin-wrapper": "^0.2.3",
-		"prettier": "^2.2.1",
+		"prettier": "^2.3.2",
 		"semantic-release": "^17.4.3",
 		"semantic-release-chrome": "^1.1.3",
 		"semantic-release-firefox": "^2.0.10",
