@@ -45,7 +45,7 @@
 		"@sourcegraph/prettierrc": "^3.0.3",
 		"@types/file-saver": "^2.0.2",
 		"@types/firefox-webext-browser": "^82.0.0",
-		"eslint": "^7.27.0",
+		"eslint": "^7.31.0",
 		"husky": "^6.0.0",
 		"parcel-bundler": "^1.12.5",
 		"parcel-plugin-web-extension": "^1.6.1",
