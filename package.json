@@ -35,7 +35,7 @@
 		"pretty-bytes": "^5.4.1",
 		"svgo": "^2.3.0",
 		"webextension-polyfill": "^0.8.0",
-		"xml-formatter": "^2.4.0"
+		"xml-formatter": "^2.6.1"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^12.1.4",
