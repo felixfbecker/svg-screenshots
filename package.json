@@ -43,7 +43,7 @@
 		"@semantic-release/github": "^7.2.3",
 		"@sourcegraph/eslint-config": "^0.25.0",
 		"@sourcegraph/prettierrc": "^3.0.3",
-		"@types/file-saver": "^2.0.2",
+		"@types/file-saver": "^2.0.5",
 		"@types/firefox-webext-browser": "^82.0.1",
 		"eslint": "^7.27.0",
 		"husky": "^6.0.0",
