@@ -41,7 +41,7 @@
 		"@commitlint/cli": "^12.1.4",
 		"@commitlint/config-conventional": "^12.1.4",
 		"@semantic-release/github": "^7.2.3",
-		"@sourcegraph/eslint-config": "^0.25.0",
+		"@sourcegraph/eslint-config": "^0.37.1",
 		"@sourcegraph/prettierrc": "^3.0.3",
 		"@types/file-saver": "^2.0.5",
 		"@types/firefox-webext-browser": "^82.0.1",
